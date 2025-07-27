@@ -67,6 +67,8 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { ElLoading, ElMessage } from 'element-plus';
+import { loadSurveyData } from '@/data';
+
 
 // 子组件导入
 import SatisfactionDistributionBar from '@/components/SatisfactionDistributionBar.vue';
@@ -129,9 +131,8 @@ onMounted(async () => {
   isLoading.value = true;
   const loading = ElLoading.service({ lock: true, text: '加载中...' });
   try {
-    const res = await fetch('/survey-data/survey-data.json');
-    if (!res.ok) throw new Error('Network error');
-    allSurveyData.value = await res.json();
+    const data = await loadSurveyData();
+    allSurveyData.value = data;
   } catch (e) {
     ElMessage.error('Failed to load survey data');
     console.error(e);

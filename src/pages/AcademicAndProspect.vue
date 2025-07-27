@@ -174,8 +174,7 @@ export default {
     onMounted(async () => {
       const loading = ElLoading.service({ lock: true, text: '加载中...' });
       try {
-        const response = await fetch('/survey-data/survey-data.json');
-        surveyData.value = await response.json();
+        surveyData.value = await loadSurveyData();
         initOrUpdateCharts();
       } catch (error) {
         console.error('数据加载失败:', error);

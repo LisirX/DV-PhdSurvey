@@ -176,6 +176,7 @@ import { CanvasRenderer } from 'echarts/renderers';
 import { ElLoading, ElMessage } from 'element-plus';
 import { kmeans } from 'ml-kmeans';
 import { PCA } from 'ml-pca';
+import { loadSurveyData } from '@/data';
 
 // ECharts 模块注册
 echarts.use([
@@ -582,9 +583,7 @@ const resetSummaryToDefault = () => {
 onMounted(async () => {
   const loading = ElLoading.service({ lock: true, text: '加载并解析数据中...' });
   try {
-    const response = await fetch('/survey-data/survey-data.json');
-    if (!response.ok) throw new Error('网络错误，无法加载数据文件');
-    const data = await response.json();
+    const data = await loadSurveyData();
     allSurveyData.value = data;
     filteredSurveyData.value = allSurveyData.value.filter(item =>
       Object.values(factors.value).every(factor => agreeLevelToNumber(item[factor.key]) !== -1)
