@@ -34,6 +34,7 @@ import * as echarts from 'echarts/core';
 import { PieChart } from 'echarts/charts';
 import { TooltipComponent, LegendComponent, TitleComponent } from 'echarts/components';
 import { LabelLayout } from 'echarts/features';
+import { loadSurveyData } from '@/data';
 import { CanvasRenderer } from 'echarts/renderers';
 import { ElRadioGroup, ElRadioButton, ElLoading } from 'element-plus';
 
