@@ -4,7 +4,7 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/CV-PhdSurvey/',
+  base: '/DV-PhdSurvey/',
   plugins: [
       vue()
   ],
